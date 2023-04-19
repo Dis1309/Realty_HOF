@@ -22,7 +22,7 @@ contract Contract {
     struct Property {
        string  email;
        string  location;
-       int256 phnu;
+       uint256 phnu;
     }
     mapping(uint256 => Property) internal metadata;
     modifier OnlySeller(){
@@ -36,7 +36,7 @@ contract Contract {
     }
     
     function list(uint256 _nftID, uint256 _purchasePrice ,string memory _email,
-       string memory _location, int256 _phnu)public payable OnlySeller() {
+       string memory _location, uint256 _phnu)public payable {
         IERC721(nftaddress).transferFrom(seller, address(this), _nftID);
 
         purchasePrice[_nftID] = _purchasePrice;
@@ -61,5 +61,16 @@ contract Contract {
     function getBalance() public view returns(uint256) {
         return address(this).balance;
     }
+    
+    function retemail(uint256 _nftID) public returns(string memory) {
+        return metadata[_nftID].email;
+    }
 
+    function retloc(uint256 _nftID) public returns(string memory) {
+        return metadata[_nftID].location;
+    }
+
+    function retph(uint256 _nftID) public returns(uint256) {
+        return metadata[_nftID].phnu;
+    }
 }

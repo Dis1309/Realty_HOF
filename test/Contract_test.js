@@ -11,6 +11,7 @@ describe('Contract', async () => {
     beforeEach(async () => {
         //Setup Account
         [buyer,seller] = await ethers.getSigners();
+        console.log(buyer);
         
         //Deploy
         const RealEstate =await ethers.getContractFactory('RealEstate');
@@ -19,18 +20,18 @@ describe('Contract', async () => {
         //mint 
         let transaction = await realEstate.connect(seller).mint("https://ipfs.io/ipfs/QmPChd2hVbrJ6bfo3WBcTW4iZnpHm8TEzWkLHmLpXhF68A/1.json");
         await transaction.wait();
-
+        console.log(await realEstate.totalSupply());
         //Deploy contract
         const Contract = await ethers.getContractFactory('Contract');
-        contract = await Contract.deploy(realEstate.address,realEstate.ownerOf(realEstate.totalSupply()));
+        contract = await Contract.deploy(await realEstate.address,realEstate.ownerOf(await realEstate.totalSupply()));
 
         //Approve
-        transaction = await realEstate.connect(seller).approve(contract.address,realEstate.totalSupply());
+        transaction = await realEstate.connect(seller).approve(contract.address,await realEstate.totalSupply());
         //list property
-        transaction = await contract.connect(seller).list(realEstate.totalSupply(),tokens(10),"hello",'no',67);
+        transaction = await contract.connect(seller).list(await realEstate.totalSupply(),tokens(10),"hello",'no',67);
         await transaction.wait();
         //buyer
-        transaction = await contract.declareBuyer(realEstate.totalSupply(),buyer.address);
+        transaction = await contract.declareBuyer(await realEstate.totalSupply(),buyer.address);
         await transaction.wait();
     })
      
