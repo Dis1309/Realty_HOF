@@ -36,7 +36,7 @@ async function main() {
     //     transaction = await realEstate.connect(seller).approve(contract.address,i);
     //     await transaction.wait();
     // }
-    var index = 1;
+    // var index = 1;
     //List property
     // transaction = await contract.connect(seller).list(index,tokens(10),"hello",'no',67);
     // await transaction.wait();

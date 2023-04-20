@@ -14,7 +14,7 @@ contract Contract {
     mapping(uint256 => address) public buyer;
     mapping(uint256 => uint256) public purchasePrice;
     mapping (uint256 => bool) public isListed;
-    
+    uint256 public index = 0;
     constructor(address _nftaddress, address payable _seller) {
         nftaddress = _nftaddress;
         seller = _seller;
@@ -24,7 +24,9 @@ contract Contract {
        string  location;
        uint256 phnu;
     }
-    mapping(uint256 => Property) internal metadata;
+
+    
+    mapping(uint256 => Property) public  metadata;
     modifier OnlySeller(){
         require(msg.sender == seller,"Only seller can use this method");
         _;
@@ -37,12 +39,14 @@ contract Contract {
     
     function list(uint256 _nftID, uint256 _purchasePrice ,string memory _email,
        string memory _location, uint256 _phnu)public payable {
-        IERC721(nftaddress).transferFrom(seller, address(this), _nftID);
+        // IERC721(nftaddress).transferFrom(seller, address(this), _nftID);
 
         purchasePrice[_nftID] = _purchasePrice;
         isListed[_nftID] = true;
-        metadata[_nftID] =  Property(_email,_location,_phnu);
-        
+        metadata[_nftID].email = _email;
+        metadata[_nftID].location = _location;
+        metadata[_nftID].phnu = _phnu;   
+        index+=1;   
     }
     
     function declareBuyer(uint256 _nftID, address _buyer) public {
@@ -54,23 +58,33 @@ contract Contract {
     function bought(uint256 _nftID) public payable onlyBuyer(_nftID) {
       require(msg.value == purchasePrice[_nftID]);
      (bool success, ) = payable(seller).call{value: address(this).balance}("");
-
-     IERC721(nftaddress).transferFrom(address(this), buyer[_nftID], _nftID);
+     isListed[_nftID] = false;
+    //  IERC721(nftaddress).transferFrom(address(this), buyer[_nftID], _nftID);
     }
 
     function getBalance() public view returns(uint256) {
         return address(this).balance;
     }
     
-    function retemail(uint256 _nftID) public returns(string memory) {
-        return metadata[_nftID].email;
+    function meta(uint256 _nftID) public view returns(uint256,string memory,string memory) {
+        return (metadata[_nftID].phnu,metadata[_nftID].email,metadata[_nftID].location);
     }
-
-    function retloc(uint256 _nftID) public returns(string memory) {
-        return metadata[_nftID].location;
+    
+    function store() public view returns(uint256){
+        return index;
     }
+    function listed(uint256 _nftID) public view returns(bool){
+        return isListed[_nftID];
+    }
+    // function retloc(uint256 _nftID) public view  returns(string memory) {
+    //     return metadata[_nftID].location;
+    // }
 
-    function retph(uint256 _nftID) public returns(uint256) {
-        return metadata[_nftID].phnu;
+    // function retph(uint256 _nftID) public view  returns(uint256) {
+    //     return metadata[_nftID].phnu;
+    // }
+
+    function retprice (uint256 _nftID) public view returns (uint256) {
+        return purchasePrice[_nftID];
     }
 }

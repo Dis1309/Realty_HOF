@@ -48,6 +48,10 @@ submit_btn.addEventListener("click", (e) =>{
 const price=document.querySelector("#price").value;
 
 const area = document.querySelector("#area").value;
+
+const email = document.querySelector("#email").value;
+
+const phno = document.querySelector('#phone_num')
   r++;
 
 // let img;
@@ -97,7 +101,7 @@ if(!ethereum) {
 
 const signer = await provider.getSigner();
 console.log(signer);
-const seller= signer
+const seller= signer;
 // const seller = signer[0];
 const cabi = [
   {
@@ -180,6 +184,19 @@ const cabi = [
     "type": "function"
   },
   {
+    "inputs": [],
+    "name": "index",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "inputs": [
       {
         "internalType": "uint256",
@@ -232,6 +249,83 @@ const cabi = [
     "type": "function"
   },
   {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_nftID",
+        "type": "uint256"
+      }
+    ],
+    "name": "listed",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_nftID",
+        "type": "uint256"
+      }
+    ],
+    "name": "meta",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "metadata",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "email",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "location",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "phnu",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "inputs": [],
     "name": "nftaddress",
     "outputs": [
@@ -271,45 +365,7 @@ const cabi = [
         "type": "uint256"
       }
     ],
-    "name": "retemail",
-    "outputs": [
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      }
-    ],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "_nftID",
-        "type": "uint256"
-      }
-    ],
-    "name": "retloc",
-    "outputs": [
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      }
-    ],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "_nftID",
-        "type": "uint256"
-      }
-    ],
-    "name": "retph",
+    "name": "retprice",
     "outputs": [
       {
         "internalType": "uint256",
@@ -317,7 +373,7 @@ const cabi = [
         "type": "uint256"
       }
     ],
-    "stateMutability": "nonpayable",
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -328,6 +384,19 @@ const cabi = [
         "internalType": "address payable",
         "name": "",
         "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "store",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
       }
     ],
     "stateMutability": "view",
@@ -708,8 +777,8 @@ const rabi =[
   }
 ];
 
-const reladd = "0xc5a5C42992dECbae36851359345FE25997F5C42d";
-const conadd = "0x67d269191c92Caf3cD7723F116c85e6E9bf55933";
+const reladd = "0x851356ae760d987E095750cCeb3bC6014560891C";
+const conadd = "0xf5059a5D33d5853360D16C683c16e67980206f36";
 const privatekey = "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80"
   
 
@@ -717,7 +786,7 @@ const privatekey = "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4
 //     const realstate = await RealEstate.deploy();
 //     await realstate.deployed();
 // fetch contract
-const realEstate = new ethers.Contract(reladd, rabi, provider);
+const realEstate = new ethers.Contract(reladd, rabi, seller);
 
 const con = new ethers.Contract(conadd, cabi, seller);
 console.log(con);
@@ -725,8 +794,9 @@ console.log(seller);
 // const tokens = (n) => {
 //    return ethers.utils.parseUnits(n.toString(), 'ether')
 // }}
+console.log(r);
 const tokens = (n) => {
-  return ethers.utils.parseUnits(n.toString(), 'ether')
+  return ethers.parseUnits(n.toString())
 }
 let transaction = await realEstate.connect(seller).mint("https://ipfs.io/ipfs/QmPChd2hVbrJ6bfo3WBcTW4iZnpHm8TEzWkLHmLpXhF68A/"+r+".json");
 console.log(await realEstate.ownerOf(r));
@@ -734,7 +804,15 @@ console.log(await realEstate.ownerOf(r));
 //          await transaction.wait();
 transaction = await realEstate.connect(seller).setApprovalForAll(conadd,r);
 // await transaction.wait();
- transaction = await con.connect(seller).list(r,price,email,address,area);
+transaction = await con.connect(seller).list(r,tokens(1),obj.address,obj.address,r);
+
+//  let transaction = await con.declareBuyer(r,signer);
+let mail = await con.meta(r);
+console.log(mail);
+let index = await con.store();
+console.log(index);
+// let hel = await con.(r);
+// console.log(hel);
 // await transaction.wait();
 // async function main() {
 //   // provider = new ethers.providers.Web3Provider(window.ethereum);
