@@ -62,17 +62,24 @@
     //     account = await ethers.utils.getAddress(accounts[0]);
     //   })
 //}
-let btn = document.getElementById("connect");
-const conadd ="0x5FbDB2315678afecb367f032d93F642f64180aa3"
-            const reladd ="0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512"
-async function hello(){
-            const provider = new ethers.providers.Web3Provider(window.ethereum);
-            const network = await provider.getNetwork();
-            await provider.send("eth_requestAccounts", []);
-            const signer = provider.getSigner();
-            // fetch contract
-            // const realEstate = new ethers.Contract(reladd, RealEstate, provider);
-            // const totalSupply = await realEstate.totalSupply();
-            // const con = new ethers.Contract(conadd, Contract, provider);
-            }
+// let btn = document.getElementById("connect");
+// const conadd ="0x5FbDB2315678afecb367f032d93F642f64180aa3"
+//             const reladd ="0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512"
+// async function hello(){
+//             const provider = new ethers.providers.Web3Provider(window.ethereum);
+//             const network = await provider.getNetwork();
+//             await provider.send("eth_requestAccounts", []);
+//             const signer = provider.getSigner();
+//             // fetch contract
+//             // const realEstate = new ethers.Contract(reladd, RealEstate, provider);
+//             // const totalSupply = await realEstate.totalSupply();
+//             // const con = new ethers.Contract(conadd, Contract, provider);
+//             }
             
+async function hello(){
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    //const network = await provider.getNetwork();
+    await provider.send("eth_requestAccounts", []);
+    const signer = await provider.getSigner();
+    console.log(signer);
+}

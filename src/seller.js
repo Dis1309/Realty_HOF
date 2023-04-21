@@ -158,6 +158,19 @@ const cabi = [
         "internalType": "uint256",
         "name": "_nftID",
         "type": "uint256"
+      }
+    ],
+    "name": "cancelSale",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_nftID",
+        "type": "uint256"
       },
       {
         "internalType": "address",
@@ -777,8 +790,8 @@ const rabi =[
   }
 ];
 
-const reladd = "0x851356ae760d987E095750cCeb3bC6014560891C";
-const conadd = "0xf5059a5D33d5853360D16C683c16e67980206f36";
+const reladd = "0x04C89607413713Ec9775E14b954286519d836FEf";
+const conadd = "0x4C4a2f8c81640e47606d3fd77B353E87Ba015584";
 const privatekey = "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80"
   
 
@@ -811,6 +824,7 @@ let mail = await con.meta(r);
 console.log(mail);
 let index = await con.store();
 console.log(index);
+
 // let hel = await con.(r);
 // console.log(hel);
 // await transaction.wait();

@@ -76,6 +76,10 @@ contract Contract {
     function listed(uint256 _nftID) public view returns(bool){
         return isListed[_nftID];
     }
+    function cancelSale(uint256 _nftID) public {
+        require(1==1);
+       (bool success, ) = payable(buyer[_nftID]).call{value: address(this).balance}("");
+    }
     // function retloc(uint256 _nftID) public view  returns(string memory) {
     //     return metadata[_nftID].location;
     // }

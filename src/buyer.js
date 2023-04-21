@@ -25,9 +25,8 @@ var  description=document.querySelector("#description");
 //     // description.innerHTML="Price: "+price;
     
 // }
-async function hello (r) {
-    const conadd = "0xf5059a5D33d5853360D16C683c16e67980206f36";
-    const cabi =  [
+const conadd = "0x4C4a2f8c81640e47606d3fd77B353E87Ba015584";
+    const cabi = [
       {
         "inputs": [
           {
@@ -74,6 +73,19 @@ async function hello (r) {
           }
         ],
         "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "_nftID",
+            "type": "uint256"
+          }
+        ],
+        "name": "cancelSale",
+        "outputs": [],
+        "stateMutability": "nonpayable",
         "type": "function"
       },
       {
@@ -333,8 +345,10 @@ async function hello (r) {
     ];
     const provider = new ethers.BrowserProvider(window.ethereum);
     const signer = await provider.getSigner();
-    console.log(signer);
     const  con = new ethers.Contract(conadd,cabi,signer);
+async function hello (r) {
+    console.log(signer);
+    
     console.log(con);
     let transaction = await con.declareBuyer(r,signer);
     let index = await con.store();
@@ -343,6 +357,7 @@ async function hello (r) {
     let mail = await con.meta(i+1);
     arr.push(mail);
     }
+    
     console.log(arr);
     const tokens = (n) => {
       return ethers.parseUnits(n.toString())
@@ -354,6 +369,11 @@ async function hello (r) {
     console.log(result);
      b = await con.getBalance();
     console.log(b);
+    for(var i=0;i<index;i++){
+      let mail = await con.listed(i+1);
+      arr1.push(mail);
+      }
+      console.log(arr1);
     // for(var i =0;i<index;i++){
     //   let mail = await con.store(i+1);
     // // }
@@ -371,9 +391,9 @@ async function hello (r) {
     
 }
 
-let buybutton=document.querySelector("#buy-btn");
-buybutton.addEventListener("click",()=>{
-
+let bubutton=document.querySelector("#sale-btn");
+bubutton.addEventListener("click",async()=>{
+  let transaction = await con.cancelSale(1); 
 })
 
 // let sortbutton=document.querySelector("#sort");
