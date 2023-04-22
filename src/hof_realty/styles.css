@@ -306,7 +306,7 @@ body {
   border-radius: 10px;
 }
 
-#connect_btn:hover, .seller:hover, .buyer:hover {
+#connect_btn:hover {
   border-radius: 30px;
 }
 
@@ -321,21 +321,6 @@ body {
   font-weight: bold;
   margin-left: 5px;
   color: #060f2b;
-}
-.btn_div{
-  display:flex;
- justify-content:center;
- align-items:center;
-}
-.buyer, .seller{
-  display: inline-block;
-  margin: 30px;
-  padding: 5px 20px;
-  align-items: center;
-  background-color: #fed88e;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  border-radius: 10px;
 }
 
 /* Scroll down Arrow */
@@ -362,6 +347,32 @@ body {
   height: 10px;
   border-bottom: 2px solid #fff;
   border-right: 2px solid #fff;
+}
+.btn_div{
+  display:flex;
+  justify-content:center;
+  align-items: center;
+  padding:20px;
+  font-size: 30px;
+  font-weight: bold;
+  margin-left: 5px;
+  color: #060f2b;
+}
+.seller_btn, .buyer_btn{
+  text-decoration:none;
+  padding:10px;
+  background-color: #fed88e;
+  color:white;
+  margin:10px;
+  font-size: 30px;
+  font-weight: bold;
+  margin-left: 5px;
+  color: #060f2b;
+  border-radius:20px;
+}
+.seller_btn:hover, .buyer_btn:hover{
+  background-color:white;
+
 }
 
 /* Animations */
@@ -391,4 +402,223 @@ body {
   100% {
     transform: translateY(0);
   }
+}
+@keyframes scrollDown {
+  0% {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, 10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@media screen and (max-width: 1024px) {
+  #about {
+    max-width: 800px;
+  }
+  #about_ques {
+    line-height: 30px;
+    font-size: 3rem;
+  }
+  #about_ans {
+    max-width: 70%;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    line-height: 23px;
+  }
+  #faq {
+    background-color: #060f2b;
+    border-radius: 30px;
+    width: 100%;
+  }
+  #faq h1 {
+    line-height: 30px;
+    font-size: 3rem;
+  }
+  #faq_list {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    gap: 20px;
+  }
+}
+@media screen and (max-width: 768px) {
+  #heading {
+    max-width: 70%;
+    text-align: center;
+    font-size: 2.7rem;
+    margin-bottom: 25px;
+    z-index: 20;
+    width: 100%;
+    font-weight: 400;
+  }
+  .line {
+    height: 50px;
+  }
+  #bitcoin {
+    width: 120px;
+    height: 120px;
+  }
+  #correct {
+    width: 150px;
+    height: 150px;
+  }
+  #container1 p {
+    max-width: 60%;
+    text-align: center;
+    line-height: 22px;
+    font-size: 15px;
+    color: darkgrey;
+    font-weight: 150 !important;
+  }
+  #about {
+    max-width: 700px;
+  }
+  #about_ques {
+    line-height: 25px;
+    font-size: 2.5rem;
+    font-weight: 460;
+  }
+  #about_ans {
+    max-width: 80%;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    line-height: 19px;
+  }
+  #faq h1 {
+    line-height: 50px;
+    font-size: 2.5rem;
+    font-weight: 460;
+  }
+  #faq_list {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    gap: 20px;
+  }
+  .card {
+    max-height: 280px;
+  }
+  .card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: white;
+  }
+
+  .card p {
+    font-size: 1rem;
+    color: #f3f3f3;
+  }
+  #connect_btn {
+    display: flex;
+    margin: 30px;
+    justify-content: space-around;
+    padding: 5px 12px;
+    align-items: center;
+    background-color: #fed88e;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border-radius: 10px;
+  }
+
+  #connect_btn img {
+    margin-right: 5px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+  }
+  #connect_btn p {
+    font-size: 23px;
+    font-weight: bold;
+    margin-left: 5px;
+    color: #060f2b;
+  }
+  #navbar {
+    padding: 10px 25px;
+  }
+
+  #navbar #logo {
+    font-size: 1.2rem;
+  }
+
+  .nav_link {
+    padding: 6px 10px;
+    border-radius: 40px;
+
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+}
+@media screen and (max-width: 640px) {
+  #about {
+    max-width: 550px;
+  }
+  #bitcoin {
+    width: 110px;
+    height: 110px;
+  }
+  #correct {
+    width: 130px;
+    height: 130px;
+  }
+  .line {
+    height: 40px;
+  }
+  #heading {
+    max-width: 70%;
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+    z-index: 20;
+    width: 100%;
+    font-weight: 400;
+  }
+  #container1 p {
+    max-width: 70%;
+    text-align: center;
+    line-height: 23px;
+    font-size: 15px;
+    color: darkgrey;
+    font-weight: 200 !important;
+  }
+  #navbar {
+    padding: 10px 25px;
+  }
+
+  #navbar #logo {
+    font-size: 1.2rem;
+  }
+
+  .nav_link {
+    padding: 6px 10px;
+    border-radius: 40px;
+
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+}
+@media screen and (max-width: 600px) {
 }

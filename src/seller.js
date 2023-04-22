@@ -236,9 +236,80 @@ const cabi = [
         "type": "uint256"
       },
       {
+        "internalType": "string",
+        "name": "_amenities",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_sqfoot",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_bedno",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string[]",
+        "name": "_img",
+        "type": "string[]"
+      },
+      {
+        "internalType": "string",
+        "name": "_descp",
+        "type": "string"
+      },
+      {
         "internalType": "uint256",
         "name": "_purchasePrice",
         "type": "uint256"
+      }
+    ],
+    "name": "list1",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_nftID",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "_city",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_country",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_addline",
+        "type": "string"
+      }
+    ],
+    "name": "list2",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_nftID",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "_name",
+        "type": "string"
       },
       {
         "internalType": "string",
@@ -247,18 +318,13 @@ const cabi = [
       },
       {
         "internalType": "string",
-        "name": "_location",
+        "name": "_proptype",
         "type": "string"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_phnu",
-        "type": "uint256"
       }
     ],
-    "name": "list",
+    "name": "list3",
     "outputs": [],
-    "stateMutability": "payable",
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -288,12 +354,80 @@ const cabi = [
         "type": "uint256"
       }
     ],
-    "name": "meta",
+    "name": "meta1",
     "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
       {
         "internalType": "uint256",
         "name": "",
         "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string[]",
+        "name": "",
+        "type": "string[]"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_nftID",
+        "type": "uint256"
+      }
+    ],
+    "name": "meta2",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_nftID",
+        "type": "uint256"
+      }
+    ],
+    "name": "meta3",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
       },
       {
         "internalType": "string",
@@ -321,18 +455,65 @@ const cabi = [
     "outputs": [
       {
         "internalType": "string",
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
         "name": "email",
         "type": "string"
       },
       {
         "internalType": "string",
-        "name": "location",
+        "name": "phoneno",
+        "type": "string"
+      },
+      {
+        "components": [
+          {
+            "internalType": "string",
+            "name": "city",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "country",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "addline",
+            "type": "string"
+          }
+        ],
+        "internalType": "struct Contract.adds",
+        "name": "adds",
+        "type": "tuple"
+      },
+      {
+        "internalType": "string",
+        "name": "proptype",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "amenities",
         "type": "string"
       },
       {
         "internalType": "uint256",
-        "name": "phnu",
+        "name": "sqfoot",
         "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "bedno",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "descp",
+        "type": "string"
       }
     ],
     "stateMutability": "view",
@@ -346,6 +527,25 @@ const cabi = [
         "internalType": "address",
         "name": "",
         "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_nftID",
+        "type": "uint256"
+      }
+    ],
+    "name": "pr",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
       }
     ],
     "stateMutability": "view",
@@ -790,8 +990,8 @@ const rabi =[
   }
 ];
 
-const reladd = "0x04C89607413713Ec9775E14b954286519d836FEf";
-const conadd = "0x4C4a2f8c81640e47606d3fd77B353E87Ba015584";
+const reladd = "0x0B2fd5B9340b48292e46BFf75D001433878DE7E4";
+const conadd = "0x3eb6f73Bf5b028720F5738341D678f32AA49Ea63";
 const privatekey = "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80"
   
 
@@ -817,10 +1017,15 @@ console.log(await realEstate.ownerOf(r));
 //          await transaction.wait();
 transaction = await realEstate.connect(seller).setApprovalForAll(conadd,r);
 // await transaction.wait();
-transaction = await con.connect(seller).list(r,tokens(1),obj.address,obj.address,r);
-
+transaction = await con.connect(seller).list2(r,"hel","hel","hel");
+transaction = await con.connect(seller).list1(r,"hel",tokens(1),tokens(2),["Hek"],"hell",tokens(5));
+transaction = await con.connect(seller).list3(r,"hel","hel","hel");
 //  let transaction = await con.declareBuyer(r,signer);
-let mail = await con.meta(r);
+let mail = await con.meta1(r);
+console.log(mail);
+ mail = await con.meta2(r);
+console.log(mail);
+ mail = await con.meta3(r);
 console.log(mail);
 let index = await con.store();
 console.log(index);

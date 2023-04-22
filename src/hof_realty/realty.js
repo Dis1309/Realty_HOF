@@ -5,7 +5,6 @@ const connect_btn_img = document.querySelector("#connect_btn img");
 const connect_btn = document.querySelector("#connect_btn");
 const heading = document.querySelector("#heading");
 const spans = heading.querySelectorAll("#heading span");
-const main_container = document.querySelector("#main_container");
 console.log(ethers);
 connect_btn.addEventListener("mouseover", () => {
   connect_btn_img.setAttribute("src", "./image/asset 10.svg");
@@ -44,7 +43,6 @@ tl.from(".line span", 1.8, {
 gsap.from("#sub-heading", { duration: 0.6, opacity: 0, delay: 1.9 });
 gsap.to("#sub-heading", { duration: 0.6, opacity: 1, delay: 1.9 });
 
-
 async function hello(){
   
   const provider = new ethers.BrowserProvider(window.ethereum);
@@ -54,8 +52,11 @@ async function hello(){
   return signer;
   
   }
-  connect_btn.addEventListener("click", ()=>{
-   const signer = hello();
+  connect_btn.addEventListener("click", async ()=>{
+    console.log(hello);
+   const signer = await hello();
+   console.log(signer);
+   console.log(Object.keys(signer).length != 0);
    if(Object.keys(signer).length != 0){
     console.log("connected");
     const btn_div = document.createElement("div");
@@ -63,7 +64,7 @@ async function hello(){
     const buyer_btn = document.createElement("a");
     buyer_btn.classList.add("buyer_btn");
     buyer_btn.innerHTML = "Buyer";
-    buyer_btn.setAttribute("href", "");
+    buyer_btn.href = "./buyer/index.html"
     btn_div.appendChild(buyer_btn);
     const seller_btn = document.createElement("a");
     seller_btn.classList.add("seller_btn");
@@ -71,7 +72,7 @@ async function hello(){
     seller_btn.setAttribute("href", "");
     btn_div.appendChild(seller_btn);
     connect_btn.style.display="none";
-    main_container.appendChild("btn_div");
+    main_container.appendChild(btn_div);
     
   }
   })

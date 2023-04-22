@@ -19,10 +19,22 @@ contract Contract {
         nftaddress = _nftaddress;
         seller = _seller;
     }
+    struct adds{
+        string city;
+        string country;
+        string addline;
+    }
     struct Property {
-       string  email;
-       string  location;
-       uint256 phnu;
+       string  name;
+       string email;
+       string phoneno;
+       adds adds;
+       string proptype;
+       string amenities;
+       uint256 sqfoot;
+       uint256 bedno;
+       string[] img;
+       string descp;
     }
 
     
@@ -37,18 +49,52 @@ contract Contract {
         _;
     }
     
-    function list(uint256 _nftID, uint256 _purchasePrice ,string memory _email,
-       string memory _location, uint256 _phnu)public payable {
+    function list1(
+        uint256 _nftID, 
+       string memory _amenities,
+       uint256 _sqfoot,
+       uint256 _bedno,
+       string[] memory _img,
+       string memory _descp,
+       uint256 _purchasePrice)public {
         // IERC721(nftaddress).transferFrom(seller, address(this), _nftID);
 
         purchasePrice[_nftID] = _purchasePrice;
         isListed[_nftID] = true;
-        metadata[_nftID].email = _email;
-        metadata[_nftID].location = _location;
-        metadata[_nftID].phnu = _phnu;   
+        metadata[_nftID].amenities = _amenities;
+        metadata[_nftID].sqfoot = _sqfoot;
+        metadata[_nftID].bedno = _bedno; 
+        metadata[_nftID].img = _img;
+        metadata[_nftID].descp = _descp;          
         index+=1;   
     }
     
+    function list2(
+        uint256 _nftID, 
+        string memory _city,
+        string memory _country,
+        string memory _addline
+       
+       )public {
+        // IERC721(nftaddress).transferFrom(seller, address(this), _nftID);
+        
+        metadata[_nftID].adds.city = _city;
+        metadata[_nftID].adds.country = _country;  
+        metadata[_nftID].adds.addline = _addline;
+       }
+    function list3(
+        uint256 _nftID, 
+        string  memory _name,
+        string memory _email,
+       string memory _proptype
+       )public {
+        // IERC721(nftaddress).transferFrom(seller, address(this), _nftID);
+        metadata[_nftID].name = _name;
+        metadata[_nftID].email = _email;
+        
+        metadata[_nftID].proptype = _proptype;
+           
+    }
     function declareBuyer(uint256 _nftID, address _buyer) public {
         buyer[_nftID] = _buyer;
     }
@@ -66,10 +112,28 @@ contract Contract {
         return address(this).balance;
     }
     
-    function meta(uint256 _nftID) public view returns(uint256,string memory,string memory) {
-        return (metadata[_nftID].phnu,metadata[_nftID].email,metadata[_nftID].location);
+    function meta1(uint256 _nftID) public view returns(string memory,uint256,uint256,string[] memory,string memory) {
+        return (
+        metadata[_nftID].amenities,
+        metadata[_nftID].sqfoot,
+        metadata[_nftID].bedno, 
+        metadata[_nftID].img,
+        metadata[_nftID].descp);
     }
-    
+    function meta2(uint256 _nftID) public view returns(string memory,string memory,string memory) {
+        return (metadata[_nftID].adds.city,metadata[_nftID].adds.country,metadata[_nftID].adds.addline);
+    }
+    function meta3(uint256 _nftID) public view returns(string memory,string memory,string memory) {
+        return (metadata[_nftID].name,
+        metadata[_nftID].email,
+       
+        
+        metadata[_nftID].proptype
+        );
+    }
+    function pr(uint256 _nftID) public view returns(uint256){
+        return purchasePrice[_nftID];
+    }
     function store() public view returns(uint256){
         return index;
     }
