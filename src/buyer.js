@@ -1,7 +1,7 @@
 // const { ethers } = require("ethers");
 
 // import ethers  from "ethers";
-console.log(ethers);var r =0 ; let obj={}; let arr =[]; let arr1 =[];
+console.log(ethers);var r =0 ; let obj={}; let arr =[]; let arr1 =[];let f = [];let arrp =[];
 // let sort=document.querySelector("#sort");
 sort.addEventListener("click",()=>{
     let price=document.querySelector("#price").value;
@@ -554,11 +554,20 @@ async function hello (r) {
     let index = await con.store();
     console.log(index);
     for(var i=0;i<index;i++){
-    let mail = await con.meta(i+1);
-    arr.push(mail);
+    let mail = await con.meta1(i+1);
+    f.push(mail);
+    mail = await con.meta2(i+1);
+    f.push(mail);
+    mail = await con.meta1(i+1);
+    f.push(mail);
+    arr.push(f);
     }
     
     console.log(arr);
+    for(var i=0;i<index;i++){
+    let price = await con.pr(i);
+    arrp.push(price);
+    }
     const tokens = (n) => {
       return ethers.parseUnits(n.toString())
     }
