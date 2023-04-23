@@ -3,7 +3,7 @@
   "version": "7.0.0",
   "description": "Practice for real state main project",
   "main": "index.js",
-  "type": "module",
+  
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

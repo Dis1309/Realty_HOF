@@ -2,8 +2,8 @@ let con, realEstate, r, conadd, reladd, privatekey, cabi, rabi, signer, seller, 
 window.addEventListener("load", async ()=>{
 /***************IMAGE UPLOAD*****************/
 
- reladd = "0x2A4bEB25dBaD7ca95FD8d30842531dBB2271a56B";
- conadd = "0xe59F53596b6608bDf04B8aE70965D0749F432c60";
+ reladd = "0x25AAC613049F56779064905749F18A0423447115";
+ conadd = "0x6b8bf66290cC88e594FBF8e8cb7E75D5e26F3673";
 
  
  privatekey = "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80"
@@ -966,8 +966,9 @@ console.log(signer);
 //   const realEstate = new ethers.Contract(reladd, rabi, seller);
   
 // const con = new ethers.Contract(conadd, cabi, seller);
-    transaction = await con.connect(seller).list1(r,amenities,sqfoot,bedno,str,desc,tokens(list),await realEstate.totalSupply());
-    let mail = await con.meta1(r);
+// const f = await realEstate.totalSupply();
+  transaction = await con.connect(seller).list1(r,amenities,sqfoot,bedno,str,desc,tokens(list),await realEstate.totalSupply());
+  let mail = await con.meta1(r);
   console.log(mail);
    mail = await con.meta2(r);
   console.log(mail);

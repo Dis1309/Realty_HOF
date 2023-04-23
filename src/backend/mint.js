@@ -8,8 +8,8 @@ import axios from "axios";
 
 const pinataApiKey = "59cdbcb0f8254fb2d8ec";
 const pinataSecretApiKey = "8d3d5cf55cd108ce4d04e06d038d0412f263a7ac9e19744e40cdc278f60f5ee0";
-const reladd = "0x2BFBF10D237e86b86E4071C7af3f0c0bED49c979";
-const conadd = "0xf08bdceBb311abd745c7319483d92b4155C4CaF7";
+const reladd = "0x25AAC613049F56779064905749F18A0423447115";
+const conadd = "0x6b8bf66290cC88e594FBF8e8cb7E75D5e26F3673";
 
 // Setting path for public directory 
 app.use(express.urlencoded({ extended: true }));

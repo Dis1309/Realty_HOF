@@ -9,5 +9,5 @@ module.exports ={
       accounts: [`0x${"e2b2fc0a72f1489e47c5dc05c2c46e77adbfeed2e0b5d11f64445d36d0ba9ebd"}`]
     }
   },
-  gasPrice:700,
+  gasPrice:200,
 }

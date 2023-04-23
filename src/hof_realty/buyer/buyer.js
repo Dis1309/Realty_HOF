@@ -27,7 +27,7 @@ back_btn.addEventListener("click", () => {
 
 
 
-const conadd = "0xe59F53596b6608bDf04B8aE70965D0749F432c60";
+const conadd = "0x6b8bf66290cC88e594FBF8e8cb7E75D5e26F3673";
 
 const cabi = [
 
@@ -931,7 +931,7 @@ const rabi =[
     "type": "function"
   }
 ];
-const reladd = "0x2A4bEB25dBaD7ca95FD8d30842531dBB2271a56B";
+const reladd = "0x25AAC613049F56779064905749F18A0423447115";
     
   let seller;
 let provider,signer,con,realEstate;
@@ -975,7 +975,7 @@ let provider,signer,con,realEstate;
 //using buy 
 async function hello (r) {
     let transaction = await con.declareBuyer(r,signer);
-    // await signer.sendTransaction({to: conadd,value: tokens(0.03),gasLimit: 600});
+    await signer.sendTransaction({to: conadd,value: tokens(0.03),gasLimit: 200});
     let b = await con.getBalance();
     console.log(b);
     let result = await con.connect(signer).bought(r,await realEstate.totalSupply(),{value: tokens(0.01)});
