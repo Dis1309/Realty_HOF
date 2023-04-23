@@ -1,8 +1,8 @@
 let con, realEstate, r, conadd, reladd, privatekey, cabi, rabi, signer, seller, tokens;
 window.addEventListener("load", async ()=>{
 /***************IMAGE UPLOAD*****************/
- reladd = "0x204b91998D9BC6D35D25b37a342C97aac65754ac";
- conadd = "0x9EEa542D08dF45f3c41B9c1C18A64D1504dD67bD";
+ reladd = "0x2A4bEB25dBaD7ca95FD8d30842531dBB2271a56B";
+ conadd = "0xe59F53596b6608bDf04B8aE70965D0749F432c60";
  privatekey = "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80"
  cabi =[
     {
@@ -1053,6 +1053,25 @@ submit_btn.addEventListener("click", (e) => {
  str=url_arr.join(" ");
 console.log(str);
 button3(amenities, sqfoot, bedno, str, desc, listing_price);
+const container1 = document.querySelector("#container1");
+console.log(container1);
+container1.innerHTML = "";
+const congo_mssg = document.createElement("div");
+congo_mssg.classList.add("congo_mssg");
+const h1 = document.createElement("h1");
+h1.innerHTML = "Congratulations";
+congo_mssg.appendChild(h1);
+const p = document.createElement("p");
+p.innerHTML = "the details of your property have been successfully uploaded. We will notify you as soon as we find a suitable buyer";
+congo_mssg.appendChild(p);
+const home_btn = document.createElement("a");
+home_btn.href =  "../main_index.html";
+home_btn.innerHTML = "Back to Home";
+congo_mssg.appendChild(home_btn);
+container1.appendChild(congo_mssg); 
+
+
+
 });
 if(!window.ethereum) {
     throw new Error("No wallet installed")

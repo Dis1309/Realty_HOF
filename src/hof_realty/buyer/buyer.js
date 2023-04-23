@@ -13,6 +13,7 @@ const personal_info = document.querySelector("#personal_info");
 const property_info = document.querySelector("#property_info");
 const back_btn = document.querySelector("#back_btn");
 const submit_btn = document.querySelector("#submit_btn");
+let tokens;
 console.log(ethers);var r =0 ; let obj={}; let arr_list1=[]; let arr_list2 =[];let arr_list3 = []; let f = [];let arrp =[];
 continue_btn.addEventListener("click", () => {
   personal_info.style.display = "none";
@@ -26,7 +27,7 @@ back_btn.addEventListener("click", () => {
 
 
 
-const conadd = "0x9EEa542D08dF45f3c41B9c1C18A64D1504dD67bD";
+const conadd = "0xe59F53596b6608bDf04B8aE70965D0749F432c60";
 const cabi =[
   {
     "inputs": [
@@ -549,10 +550,11 @@ const cabi =[
     "type": "receive"
   }
 ];
+let con, provider, signer;
    async function sure(){
-    const provider = new ethers.BrowserProvider(window.ethereum);
-    const signer = await provider.getSigner();
-    const  con = new ethers.Contract(conadd,cabi,signer);
+     provider = new ethers.BrowserProvider(window.ethereum);
+     signer = await provider.getSigner();
+      con = new ethers.Contract(conadd,cabi,signer);
     console.log(signer);
     
     console.log(con);
@@ -578,7 +580,7 @@ const cabi =[
     let price = await con.pr(i);
     arrp.push(price);
     }
-    const tokens = (n) => {
+    tokens = (n) => {
       return ethers.parseUnits(n.toString())
     }
   }
@@ -615,9 +617,9 @@ submit_btn.addEventListener("click", async (e) => {
   const email = document.querySelector("#email").value;
   const ph_number = document.querySelector("#ph_number").value;
   const city = document.querySelector("#city").value;
-  const min_price = document.querySelector("#min_price").value;
-  const max_price = document.querySelector("#max_price").value;
-  const room_count = document.querySelector("#bedroom_count").value;
+  const min_price = Number(document.querySelector("#min_price").value);
+  const max_price = Number(document.querySelector("#max_price").value);
+  const room_count = Number(document.querySelector("#bedroom_count").value);
   
   
   console.log(name);
@@ -631,7 +633,8 @@ submit_btn.addEventListener("click", async (e) => {
   console.log(arrp);
 console.log(arrp[0] == '0');
  for(let i=0; i<arrp.length; i++){
-  
+  //start
+  if(arrp[i]<= max_price && arrp[i]>= min_price && room_count == arr_list1[i][2] && city == arr_list2[i][0]){
     const arr_image = ["./house1_drawingroom.jpg", "./house1.jpg"];
     console.log(arr_image);
     //here we are creating a div that will show the info of a single house
@@ -765,8 +768,13 @@ console.log(arrp[0] == '0');
         marker.setAnimation(google.maps.Animation.BOUNCE);
       }
     }
+    const address = arr_list2[i][2];
+    const address_arr = address.split(" ");
+    console.log(address_arr);
+    const address_str = address_arr.join("%20");
+    console.log(address_str);
     fetch(
-      `https://trueway-geocoding.p.rapidapi.com/Geocode?address=awho%20twin%20towers%20greater%20noida%20india&language=en`,
+      `https://trueway-geocoding.p.rapidapi.com/Geocode?address=${address_str}&language=en`,
       options
     )
       .then((response) => response.json())
@@ -794,23 +802,46 @@ console.log(arrp[0] == '0');
     const buy_btn = document.createElement("button");
     buy_btn.classList.add("buy_btn");
     buy_btn.innerHTML = "Buy Now";
+    buy_btn.setAttribute("data-niftbuy", i);
+    console.log(buy_btn);
+    console.log(buy_btn.dataset.niftbuy);
     div_buttons.appendChild(buy_btn);
     //cancel btn
     const cancel_btn = document.createElement("button");
     cancel_btn.classList.add("cancel_btn");
     cancel_btn.innerHTML = "Cancel Deal";
+    //setting the data property
+    cancel_btn.setAttribute("data-nift", i);
+    console.log(cancel_btn);
+    console.log(cancel_btn.dataset.nift);
     div_buttons.appendChild(cancel_btn);
 
     hidden.appendChild(div_buttons);
     house.appendChild(hidden);
   container2.appendChild(house);
-  }
+//end 
+    } 
+}
  
  
 });
+container2.addEventListener("click", (e)=>{
+  if (e.target.className == "buy_btn") {
+    let niftbuy = e.target.dataset.niftbuy;
+    e.target.style.backgroundColor = "green";
+    console.log(niftbuy);
+    hello(Number(niftbuy));
+  }
+})
 
-
-
+container2.addEventListener("click", async (e)=>{
+  if (e.target.className == "cancel_btn") {
+    let nift = e.target.dataset.nift;
+    e.target.style.backgroundColor = "red";
+    let transaction = await con.cancelSale(nift); 
+    
+}
+})
 
 const show_more = document.querySelector(".show_more_btn");
 container2.addEventListener("click", (e) => {

@@ -71,8 +71,8 @@ body {
 }
 input {
   width: 300px;
-  padding: 10px 0;
-  font-size: 16px;
+  padding: 5px 0;
+  font-size: 14px;
   color: #fff;
   margin-bottom: 30px;
   border: none;
@@ -192,6 +192,39 @@ label{
 
   #describe{
     padding:20px 10px;
+  }
+  .congo_mssg{
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+    color:white;
+  }
+  .congo_mssg h1{
+    font-size: 33px;
+    font-weight: 550;
+    margin:20px;
+
+  }
+  .congo_mssg p{
+    width:60%;
+    color: #fff;
+    font-size:22px;
+    font-weight:400;
+  }
+  .congo_mssg a{
+    text-decoration: none;
+    color:#060f2b;
+    border:none;
+    margin: 20px;
+    padding: 5px 12px;
+    background-color: #fed88e;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border-radius: 10px;
+  }
+  .congo_mssg button:hover{
+    background-color: #fff;
   }
 @media screen and (max-width:1300px) {
     #container1_form{
