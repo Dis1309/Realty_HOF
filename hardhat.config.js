@@ -6,8 +6,8 @@ module.exports ={
     hardhat :{},
     polygon_mumbai:{
       url:"https://polygon-mumbai.g.alchemy.com/v2/Gc_VlMr5WTe57ynQps7sKYAEFoqIqxfY",
-      accounts: [`0x${"e640df6bd6fde686b64a74304ac8ba636106a546401afbb5dcb0899e85403110"}`]
+      accounts: [`0x${"e2b2fc0a72f1489e47c5dc05c2c46e77adbfeed2e0b5d11f64445d36d0ba9ebd"}`]
     }
   },
-  gasPrice:200 ,
+  gasPrice:700,
 }

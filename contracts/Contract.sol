@@ -56,9 +56,9 @@ contract Contract {
        uint256 _bedno,
        string memory _img,
        string memory _descp,
-       uint256 _purchasePrice)public {
-        // IERC721(nftaddress).transferFrom(seller, address(this), _nftID);
-
+       uint256 _purchasePrice,
+       uint256 _tokenID)public {
+        IERC721(nftaddress).transferFrom(seller, address(this), _tokenID);
         purchasePrice[_nftID] = _purchasePrice;
         isListed[_nftID] = true;
         metadata[_nftID].amenities = _amenities;
@@ -76,7 +76,7 @@ contract Contract {
         string memory _addline
        
        )public {
-        // IERC721(nftaddress).transferFrom(seller, address(this), _nftID);
+      
         
         metadata[_nftID].adds.city = _city;
         metadata[_nftID].adds.country = _country;  
@@ -88,7 +88,7 @@ contract Contract {
         string memory _email,
        string memory _proptype
        )public {
-        // IERC721(nftaddress).transferFrom(seller, address(this), _nftID);
+         
         metadata[_nftID].name = _name;
         metadata[_nftID].email = _email;
         
@@ -101,11 +101,11 @@ contract Contract {
     receive() external payable {}
     
 
-    function bought(uint256 _nftID) public payable onlyBuyer(_nftID) {
+    function bought(uint256 _nftID,uint256 _tokenID) public payable onlyBuyer(_nftID) {
       require(msg.value == purchasePrice[_nftID]);
      (bool success, ) = payable(seller).call{value: address(this).balance}("");
      isListed[_nftID] = false;
-    //  IERC721(nftaddress).transferFrom(address(this), buyer[_nftID], _nftID);
+     IERC721(nftaddress).transferFrom(address(this), buyer[_nftID], _tokenID);
     }
 
     function getBalance() public view returns(uint256) {
@@ -126,8 +126,6 @@ contract Contract {
     function meta3(uint256 _nftID) public view returns(string memory,string memory,string memory) {
         return (metadata[_nftID].name,
         metadata[_nftID].email,
-       
-        
         metadata[_nftID].proptype
         );
     }
@@ -144,13 +142,6 @@ contract Contract {
         require(1==1);
        (bool success, ) = payable(buyer[_nftID]).call{value: address(this).balance}("");
     }
-    // function retloc(uint256 _nftID) public view  returns(string memory) {
-    //     return metadata[_nftID].location;
-    // }
-
-    // function retph(uint256 _nftID) public view  returns(uint256) {
-    //     return metadata[_nftID].phnu;
-    // }
 
     function retprice (uint256 _nftID) public view returns (uint256) {
         return purchasePrice[_nftID];
