@@ -249,7 +249,7 @@ input {
   align-items: center;
 }
 
-.swiper {
+.image_div {
   margin:0px;
   padding:0px;
   width: 45%;
@@ -257,19 +257,9 @@ input {
   border-bottom-left-radius: 10px;
   border-top-left-radius:10px;
 }
-.swiper-slide {
-  text-align: center;
-  margin:0px;
-  padding:0px;
-  background: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-bottom-left-radius: 10px;
-  border-top-left-radius:10px;
-}
 
-.swiper-slide img {
+
+.image_div .image {
   margin:0px;
   padding:0px;
   display: block;
@@ -279,18 +269,14 @@ input {
   border-bottom-left-radius: 10px;
   border-top-left-radius:10px;
 }
-.swiper-wrapper{
-  width:100%;
-  height:100%;
-  margin:0px;
-  padding-bottom:0px;
-}
+
 .div_info {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   justify-content: center;
   align-items: center;
+  gap:25px;
 }
 
 .visible_content {
@@ -305,15 +291,17 @@ input {
 }
 .visible_content_heading {
   font-weight: 500;
-  font-size: 25px;
+  font-size: 33px;
+  margin:10px;
  
 }
 .visible_content p {
-  font-size: 14px;
+  font-size: 16px;
   color: darkgrey;
+  margin:5px;
 }
 .visible_content h2 {
-  font-size: 18px;
+  font-size: 19px;
   color: white;
   font-weight: 400;
 }
@@ -361,9 +349,6 @@ input {
   justify-content:center;
   align-items:center;
 }
-.swiper-button-next::after{
-  width:12px;
-  height:12px;
-}
+
 
 /*___________________________________________________________________________*/
