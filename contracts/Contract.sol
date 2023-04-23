@@ -33,7 +33,7 @@ contract Contract {
        string amenities;
        uint256 sqfoot;
        uint256 bedno;
-       string[] img;
+       string img;
        string descp;
     }
 
@@ -54,7 +54,7 @@ contract Contract {
        string memory _amenities,
        uint256 _sqfoot,
        uint256 _bedno,
-       string[] memory _img,
+       string memory _img,
        string memory _descp,
        uint256 _purchasePrice)public {
         // IERC721(nftaddress).transferFrom(seller, address(this), _nftID);
@@ -112,7 +112,7 @@ contract Contract {
         return address(this).balance;
     }
     
-    function meta1(uint256 _nftID) public view returns(string memory,uint256,uint256,string[] memory,string memory) {
+    function meta1(uint256 _nftID) public view returns(string memory,uint256,uint256,string memory,string memory) {
         return (
         metadata[_nftID].amenities,
         metadata[_nftID].sqfoot,
