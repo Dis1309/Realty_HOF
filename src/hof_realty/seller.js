@@ -1023,7 +1023,7 @@ console.log(await realEstate.ownerOf(r));
 transaction = await realEstate.connect(seller).setApprovalForAll(conadd,r);
 // await transaction.wait();
 transaction = await con.connect(seller).list2(r,"Noida","India","Antriksh Greens Sector-50");
-transaction = await con.connect(seller).list1(r,"ameni",100,5,"src/show_more/house1_drawingroom.jpg  src/show_more/house1_interior.jpg","description",tokens(0.05));
+transaction = await con.connect(seller).list1(r,"ameni",100,5,"src/show_more/house1_drawingroom.jpg  src/show_more/house1_interior.jpg","description",tokens(0.00005));
 transaction = await con.connect(seller).list3(r,"name","email","prop");
 //  let transaction = await con.declareBuyer(r,signer);
 let mail = await con.meta1(r);

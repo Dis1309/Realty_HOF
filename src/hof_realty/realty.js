@@ -69,7 +69,7 @@ async function hello(){
     const seller_btn = document.createElement("a");
     seller_btn.classList.add("seller_btn");
     seller_btn.innerHTML = "Seller";
-    seller_btn.setAttribute("href", "");
+    seller_btn.href = "./seller/index.html"
     btn_div.appendChild(seller_btn);
     connect_btn.style.display="none";
     main_container.appendChild(btn_div);

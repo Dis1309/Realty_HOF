@@ -25,7 +25,7 @@ var  description=document.querySelector("#description");
 //     // description.innerHTML="Price: "+price;
     
 // }
-const conadd = "0x3eb6f73Bf5b028720F5738341D678f32AA49Ea63";
+const conadd = "0x9EEa542D08dF45f3c41B9c1C18A64D1504dD67bD";
 const cabi = [
   {
     "inputs": [
@@ -174,9 +174,9 @@ const cabi = [
         "type": "uint256"
       },
       {
-        "internalType": "string[]",
+        "internalType": "string",
         "name": "_img",
-        "type": "string[]"
+        "type": "string"
       },
       {
         "internalType": "string",
@@ -295,9 +295,9 @@ const cabi = [
         "type": "uint256"
       },
       {
-        "internalType": "string[]",
+        "internalType": "string",
         "name": "",
-        "type": "string[]"
+        "type": "string"
       },
       {
         "internalType": "string",
@@ -432,6 +432,11 @@ const cabi = [
         "internalType": "uint256",
         "name": "bedno",
         "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "img",
+        "type": "string"
       },
       {
         "internalType": "string",
@@ -571,10 +576,10 @@ async function hello (r) {
     const tokens = (n) => {
       return ethers.parseUnits(n.toString())
     }
-    await signer.sendTransaction({to: conadd,value: tokens(3),gasLimit: 60000});
+    await signer.sendTransaction({to: conadd,value: tokens(0.03),gasLimit: 600});
     let b = await con.getBalance();
     console.log(b);
-    let result = await con.connect(signer).bought(r,{value: tokens(1)});
+    let result = await con.connect(signer).bought(r,{value: tokens(0.01)});
     console.log(result);
      b = await con.getBalance();
     console.log(b);
