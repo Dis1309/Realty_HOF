@@ -1,43 +1,7 @@
-// import { ethers } from "hardhat";
+
 
 console.log(ethers);
-// import  ether  from 'hardhat';
-// let obj={};let arr = [];let r =0;
-// const submit_btn = document.querySelector("#submit_btn");
-// const form = document.forms["forms"];
-// submit_btn.addEventListener("click", (e) =>{
-//   r++;
-//     const address=document.querySelector("#address").value;
-
-// const price=document.querySelector("#price").value;
-
-// const area = document.querySelector("#area").value;
-// obj.address = address;
-// obj.price=price;
-// obj.area=area;
-// arr.push(obj);
-// e.preventDefault();
-//     console.log(obj);
-//     hello();
-// }
-    
-// )
-// async function hello(){
-//     const provider = new ethers.providers.Web3Provider(window.ethereum);
-//   const network = await provider.getNetwork();
-//   await provider.send("eth_requestAccounts", []);
-//   const seller = provider.getSigner();
-  
-// }
  let obj={};let arr = [];let r =0;
-// import IPFS from "/home/dishad/Desktop/BLOCKCHAIN/RealState_practice/node_modules/ipfs-api/nanoid/index";
-// import IPFS from './ipfs-http-client';
-// import {IPFS} from "https://cdn.jsdelivr.net/npm/ipfs/dist/index.min.js";
-// (async () => {
-//   const src = chrome.runtime.getURL("./ipfs-http-client");
-//   const contentMain = await import(src);
-//   contentMain.main();
-// })();
 
 const submit_btn = document.querySelector("#submit_btn");
 const form = document.forms["#forms"];
@@ -53,18 +17,6 @@ const email = document.querySelector("#email").value;
 
 const phno = document.querySelector('#phone_num')
   r++;
-
-// let img;
-// const imageInput= document.getElementById("imageInput");
-//                   var uploaded_image="";
-//                   imageInput.addEventListener("change",function(){
-//                       const reader=new FileReader();
-//                       reader.addEventListener("load",()=>{
-//                           uploaded_image=reader.result;
-//                           document.querySelector("#display_image").style.backgroundImage=`url(${uploaded_image})`;
-//                       });
-//                       img = reader.readAsDataURL(this.files[0]);
-//                   });
     obj.address = address;
     obj.price=price;
     obj.area=area;
@@ -72,16 +24,6 @@ const phno = document.querySelector('#phone_num')
     
         console.log(obj);
         hello();
-       // hello();
-        // +console.log(json);
-    // provider = new ethers.providers.Web3Provider(window.ethereum);
-   
-     // main();
-       
-       
-         
-      
-      // console.log(network.chainId); 
     }
     
 )
@@ -93,8 +35,6 @@ async function hello(){
   }
   const provider = new ethers.BrowserProvider(window.ethereum)
   console.log(provider);
-// const network = await provider.getNetwork();
-// await provider.m
 if(!ethereum) {
   throw new Error("No ethereum");
 }
@@ -102,7 +42,6 @@ if(!ethereum) {
 const signer = await provider.getSigner();
 console.log(signer);
 const seller= signer;
-// const seller = signer[0];
 const cabi =[
   {
     "inputs": [
@@ -998,34 +937,26 @@ const rabi =[
 const reladd = "0x204b91998D9BC6D35D25b37a342C97aac65754ac";
 const conadd = "0x9EEa542D08dF45f3c41B9c1C18A64D1504dD67bD";
 const privatekey = "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80"
-  
-
-// const RealEstate =await ethers.getContractFactory('RealEstate');
-//     const realstate = await RealEstate.deploy();
-//     await realstate.deployed();
-// fetch contract
 const realEstate = new ethers.Contract(reladd, rabi, seller);
 
 const con = new ethers.Contract(conadd, cabi, seller);
 console.log(con);
 console.log(seller);
-// const tokens = (n) => {
-//    return ethers.utils.parseUnits(n.toString(), 'ether')
-// }}
 console.log(r);
 const tokens = (n) => {
   return ethers.parseUnits(n.toString())
 }
-let transaction = await realEstate.connect(seller).mint("https://ipfs.io/ipfs/QmPChd2hVbrJ6bfo3WBcTW4iZnpHm8TEzWkLHmLpXhF68A/"+r+".json");
+const response = await fetch(`http://localhost:3000/request-ipfs-data`)
+const responseData = await response.json()
+const urlToMint = responseData[0].data
+console.log(urlToMint)
+
+let transaction = await realEstate.connect(seller).mint(urlToMint);
 console.log(await realEstate.ownerOf(r));
-// const totalSupply = await realEstate.totalSupply(); 
-//          await transaction.wait();
 transaction = await realEstate.connect(seller).setApprovalForAll(conadd,r);
-// await transaction.wait();
 transaction = await con.connect(seller).list2(r,"Noida","India","Antriksh Greens Sector-50");
 transaction = await con.connect(seller).list1(r,"ameni",100,5,"src/show_more/house1_drawingroom.jpg  src/show_more/house1_interior.jpg","description",tokens(0.05));
 transaction = await con.connect(seller).list3(r,"name","email","prop");
-//  let transaction = await con.declareBuyer(r,signer);
 let mail = await con.meta1(r);
 console.log(mail);
  mail = await con.meta2(r);
