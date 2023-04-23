@@ -28,7 +28,9 @@ back_btn.addEventListener("click", () => {
 
 
 const conadd = "0xe59F53596b6608bDf04B8aE70965D0749F432c60";
-const cabi =[
+
+const cabi = [
+
   {
     "inputs": [
       {
@@ -50,6 +52,11 @@ const cabi =[
       {
         "internalType": "uint256",
         "name": "_nftID",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_tokenID",
         "type": "uint256"
       }
     ],
@@ -188,6 +195,11 @@ const cabi =[
       {
         "internalType": "uint256",
         "name": "_purchasePrice",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_tokenID",
         "type": "uint256"
       }
     ],
@@ -550,11 +562,16 @@ const cabi =[
     "type": "receive"
   }
 ];
-let con, provider, signer;
+
+
+    
+  
+let provider,signer,con,realEstate;
    async function sure(){
      provider = new ethers.BrowserProvider(window.ethereum);
-     signer = await provider.getSigner();
-      con = new ethers.Contract(conadd,cabi,signer);
+    signer = await provider.getSigner();
+    con = new ethers.Contract(conadd,cabi,signer);
+    realEstate = new ethers.Contract(reladd, rabi, seller);
     console.log(signer);
     
     console.log(con);
@@ -591,7 +608,7 @@ async function hello (r) {
     await signer.sendTransaction({to: conadd,value: tokens(0.03),gasLimit: 600});
     let b = await con.getBalance();
     console.log(b);
-    let result = await con.connect(signer).bought(r,{value: tokens(0.01)});
+    let result = await con.connect(signer).bought(r,await realEstate.totalSupply(),{value: tokens(0.01)});
     console.log(result);
      b = await con.getBalance();
     console.log(b);
